@@ -7,23 +7,26 @@ namespace T01.Vehicles
     {
         static void Main(string[] args)
         {
+            IReader reader = new Reader();
+            IWriter writer = new Writer();
+
             try
             {
-                string[] carInfo = Console.ReadLine()
+                string[] carInfo = reader.ReadLine()
                 .Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                string[] truckInfo = Console.ReadLine()
+                string[] truckInfo = reader.ReadLine()
                     .Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                string[] busInfo = Console.ReadLine()
+                string[] busInfo = reader.ReadLine()
                     .Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
                 Car car = new Car(double.Parse(carInfo[1]), double.Parse(carInfo[2]), double.Parse(carInfo[3]));
                 Truck truck = new Truck(double.Parse(truckInfo[1]), double.Parse(truckInfo[2]), double.Parse(truckInfo[3]));
                 Bus bus = new Bus(double.Parse(busInfo[1]), double.Parse(busInfo[2]), double.Parse(busInfo[3]));
 
-                int n = int.Parse(Console.ReadLine());
+                int n = int.Parse(reader.ReadLine());
                 for (int i = 0; i < n; i++)
                 {
-                    string[] cmdArgs = Console.ReadLine()
+                    string[] cmdArgs = reader.ReadLine()
                         .Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
                     string action = cmdArgs[0];
@@ -60,13 +63,13 @@ namespace T01.Vehicles
                     }
                 }
 
-                Console.WriteLine($"Car: {car.FuelQuantity:f2}");
-                Console.WriteLine($"Truck: {truck.FuelQuantity:f2}");
-                Console.WriteLine($"Bus: {bus.FuelQuantity:f2}");
+                writer.WriteLine($"Car: {car.FuelQuantity:f2}");
+                writer.WriteLine($"Truck: {truck.FuelQuantity:f2}");
+                writer.WriteLine($"Bus: {bus.FuelQuantity:f2}");
             }
             catch (ArgumentException ae)
             {
-                Console.WriteLine(ae.Message);
+                writer.WriteLine(ae.Message);
             }
 
         }
