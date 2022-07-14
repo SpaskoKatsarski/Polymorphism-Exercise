@@ -9,7 +9,6 @@ namespace T02.VehiclesExtension
         private const double TruckFuelConsumptionIncrement = 1.6;
         private const double RefuelCoeffiecient = 0.95;
 
-        //TODO: Fix truck Refuel (950 -> 1000) and Fuel Quantity.
         public Truck(double fuelQuantity, double fuelConsumption, double tankCapacity)
             : base(fuelQuantity, fuelConsumption, tankCapacity)
         {
