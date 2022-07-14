@@ -21,7 +21,18 @@ namespace T02.VehiclesExtension
 
         public override void Refuel(double liters)
         {
-            base.Refuel(liters * RefuelCoeffiecient);
+            if (this.FuelQuantity + liters > this.TankCapacity)
+            {
+                throw new ArgumentException($"Cannot fit {liters} fuel in the tank");
+            }
+            else if (liters <= 0)
+            {
+                throw new ArgumentException("Fuel must be a positive number");
+            }
+            else
+            {
+                this.FuelQuantity += liters * RefuelCoeffiecient;
+            }
         }
     }
 }
